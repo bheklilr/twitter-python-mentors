@@ -2,10 +2,27 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="body-content">
-    <div class="row">
-      <h1>About</h1>
-      <p>This template was created by <a href="http://github.com/sloria/">Steven Loria</a> for use with the <a href="http://github.com/audreyr/cookiecutter/">cookiecutter</a> package by <a href="http://github.com/audreyr/">Audrey Roy</a>.</p>
+<div id="about-page" class="body-content">
+    <div id="about" class="content">
+        <div class="row">
+          <h1>About</h1>
+          <p>Inspired by an episode of the <a href="http://testandcode.com/36">Test and Code</a> podcast, we have come together to build a community of mentors willing help out anyone who has a Python problem.  To this end, we have created this website to make it easier for people to find a mentor.
+          </p>
+        </div>
+    </div>
+
+    <div id="who-we-are" class="content">
+        <div class="row">
+            <h1>Who We Are</h1>
+        </div>
+        <div id="brian-bio" class="row bio">
+            <h3>Brian Okken</h3>
+            <p>Host of Test And Code and Python Bytes.  Author of Python Testing with pytest.</p>
+        </div>
+        <div id="aaron-bio" class="row bio">
+            <h3>Aaron Stevens</h3>
+            <p>The creator of this website.</p>
+        </div>
     </div>
 </div>
 {% endblock %}

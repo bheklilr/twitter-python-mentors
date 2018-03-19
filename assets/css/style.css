@@ -84,3 +84,30 @@ footer .footer-nav {
   margin-right: 25px;
   list-style: none;
 }
+
+nav.navbar.navbar-inverse {
+  background-color: rgb(36, 52, 71);
+}
+
+#create-account-btn {
+  color: #FFF;
+}
+
+.navbar-inverse .navbar-brand {
+  color: #EEE;
+}
+
+
+/* about.html */
+
+#about-page #about p {
+  padding-left: 2rem;
+  max-width: 75%;
+}
+
+#about-page .bio {
+  padding-left: 1rem;
+}
+#about-page .bio p {
+  padding-left: 1rem;
+}

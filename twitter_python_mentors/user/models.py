@@ -25,19 +25,42 @@ class Role(SurrogatePK, Model):
         return '<Role({name})>'.format(name=self.name)
 
 
+class UserDisciplinesAssoc(SurrogatePK, Model):
+    __tablename__ = 'user_disciplines_assoc'
+
+    user_id = Column(db.Integer, db.ForeignKey('users.id'))
+    discipline_id = Column(db.Integer, db.ForeignKey('disciplines.id'))
+
+
+class UserLanguageAssoc(SurrogatePK, Model):
+    __tablename__ = 'user_language_assoc'
+
+    user_id = Column(db.Integer, db.ForeignKey('users.id'))
+    language_id = Column(db.Integer, db.ForeignKey('languages.id'))
+
+
+class Language(SurrogatePK, Model):
+    __tablename__ = 'languages'
+
+    language = Column(db.String(20))
+
+
 class User(UserMixin, SurrogatePK, Model):
     """A user of the app."""
 
     __tablename__ = 'users'
     username = Column(db.String(80), unique=True, nullable=False)
-    email = Column(db.String(80), unique=True, nullable=False)
-    #: The hashed password
-    password = Column(db.Binary(128), nullable=True)
     created_at = Column(db.DateTime, nullable=False, default=dt.datetime.utcnow)
     first_name = Column(db.String(30), nullable=True)
     last_name = Column(db.String(30), nullable=True)
     active = Column(db.Boolean(), default=False)
-    is_admin = Column(db.Boolean(), default=False)
+
+    email = Column(db.String(80), unique=True, nullable=True)
+    twitter = Column(db.String(80), unique=True, nullable=True)
+    reddit = Column(db.String(80), unique=True, nullable=True)
+
+    disciplines = relationship('Discipline', secondary=UserDisciplinesAssoc)
+    spoken_languages = relationship('Language', secondary=UserLanguageAssoc)
 
     def __init__(self, username, email, password=None, **kwargs):
         """Create instance."""
@@ -63,3 +86,25 @@ class User(UserMixin, SurrogatePK, Model):
     def __repr__(self):
         """Represent instance as a unique string."""
         return '<User({username!r})>'.format(username=self.username)
+
+
+class Discipline(SurrogatePK, Model):
+    __tablename__ = 'disciplines'
+
+    name = Column(db.String(80), unique=True, nullable=False)
+
+
+class CommentDisciplinesAssoc(SurrogatePK, Model):
+    __tablename__ = 'comment_disciplines_assoc'
+
+    comment_id = Column(db.Integer, db.ForeignKey('comments.id'))
+    discipline_id = Column(db.Integer, db.ForeignKey('disciplines.id'))
+
+
+class Comment(SurrogatePK, Model):
+    __tablename__ = 'comments'
+
+    text = Column(db.String(500), unique=False, nullable=True)
+    for_user_id = Column(db.Integer, db.ForeignKey('users.id'))
+    was_helped = Column(db.Boolean, nullable=False)
+    on_disciplines = relationship('Discipline', secondary=CommentDisciplinesAssoc)
