@@ -14,9 +14,6 @@ def create_app(config_object=ProdConfig):
     :param config_object: The configuration object to use.
     """
     subprocess.check_call(['npm', 'run-script', 'build'])
-    subprocess.check_call(['flask', 'db', 'init'])
-    subprocess.check_call(['flask', 'db', 'migrate'])
-    subprocess.check_call(['flask', 'db', 'upgrade'])
 
     app = Flask(__name__.split('.')[0])
     app.config.from_object(config_object)
