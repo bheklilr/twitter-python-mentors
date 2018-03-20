@@ -50,4 +50,4 @@ env/
 
 # webpack-built files
 /twitter_python_mentors/static/build/
-/twitter_python_mentors/webpack/manifest.json
+# /twitter_python_mentors/webpack/manifest.json
