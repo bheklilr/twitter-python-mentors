@@ -47,7 +47,14 @@ env/
 
 # npm
 /node_modules/
+package-lock.json
 
 # webpack-built files
 /twitter_python_mentors/static/build/
-# /twitter_python_mentors/webpack/manifest.json
+/twitter_python_mentors/webpack/manifest.json
+
+# Sublime
+/*.sublime-*
+
+# Development
+/dev.db
