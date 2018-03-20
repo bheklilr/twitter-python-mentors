@@ -6,5 +6,5 @@
         "main_js.js": "main_js.2c5c7f67fbd5df86a623.js",
         "main_js.map": "main_js.2c5c7f67fbd5df86a623.js.map"
     },
-    "publicPath": "https://twitter-python-mentors.herokuapp.com:2992/static/build/"
+    "publicPath": "/static/build/"
 }
