@@ -4,9 +4,11 @@
   "description": "A website to help people find a Python mentor on Twitter",
   "scripts": {
     "build": "webpack --progress --colors -p",
+    "build-colorless": "webpack -p",
     "start": "concurrently -n \"WEBPACK,FLASK\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run webpack-dev-server\" \"npm run flask-server\"",
     "webpack-dev-server": "webpack-dev-server --port 2992 --hot --inline",
     "flask-server": "flask run",
+    "gunicorn-server": "gunicorn twitter_python_mentors.app:create_app() -b 0.0.0.0:$PORT -w 3",
     "lint": "eslint \"assets/js/*.js\""
   },
   "repository": {
