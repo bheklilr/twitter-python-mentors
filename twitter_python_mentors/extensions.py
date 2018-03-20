@@ -39,7 +39,8 @@ class PatchedWebpack(Webpack):
             project_dir = os.path.dirname(os.path.abspath(app.root_path))
             os.chdir(project_dir)
             try:
-                subprocess.check_call(['npm', 'run-script', 'build'])
+                # subprocess.check_call(['npm', 'run-script', 'build'])
+                pass
             finally:
                 os.chdir(pwd)
         if not os.path.exists(full_path):
