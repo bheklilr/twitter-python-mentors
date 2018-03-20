@@ -35,7 +35,7 @@ class PatchedWebpack(Webpack):
         full_path = os.path.join(app.root_path, webpack_stats)
         if not os.path.exists(full_path):
             # Need to manually run webpack on the parent dir of app.root_path
-            pwd = os.curdir()
+            pwd = os.curdir
             project_dir = os.path.dirname(os.path.abspath(app.root_path))
             os.chdir(project_dir)
             try:
