@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 """The app module, containing the app factory function."""
-import subprocess
 from flask import Flask, render_template
 
 from twitter_python_mentors import commands, public, user
@@ -13,8 +12,6 @@ def create_app(config_object=ProdConfig):
 
     :param config_object: The configuration object to use.
     """
-    subprocess.check_call(['npm', 'run-script', 'build'])
-
     app = Flask(__name__.split('.')[0])
     app.config.from_object(config_object)
     register_extensions(app)
